@@ -1,15 +1,29 @@
-// 1. Импортируем наш компонент HeroSection
-// Путь должен вести в папку components
-import HeroSection from './components/HeroSection/HeroSection';
+import Header from './components/Header/Header';
+import HeroSection from './components/HeroSection/HeroSection'; //
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
-    <div className="App">
-      <HeroSection />
+    <div className="wrapper"> {/* Твой привычный wrapper */}
+
+      <header className="header">
+        <Header /> {/* Внутри него будет твой <nav> */}
+      </header>
+
+      <main className="main-content">
+        <HeroSection />
+        {/* Другие БЭМ блоки/секции */}
+        <section className="services">
+           {/* Компонент услуг */}
+        </section>
+      </main>
+
+      <footer className="footer">
+        <Footer />
+      </footer>
+
     </div>
   );
 }
 
-// 2. САМОЕ ВАЖНОЕ: Экспорт по умолчанию
-// Именно эту строку ищет main.jsx
 export default App;

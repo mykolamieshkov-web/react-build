@@ -1,0 +1,107 @@
+// файл с утилитарными стилями, сюда записываються свойства тех классов, которые многоразово повторяются в проекте
+
+
+@use "./mixins/media" as media;
+@use "./mixins/mixins" as mix;
+[class*="__container"] {
+width: 100%;
+max-width: var(--container-max-width);
+height: inherit;
+margin: 0 auto;
+padding: 0 16px;
+@include media.tablet-b {
+    max-width: 960px;
+}
+@include media.tablet {
+    max-width: none;
+
+
+}
+
+}
+// стили для .wrapper:
+.wrapper {
+    overflow: clip;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.wrapper>main {
+    flex-grow: 1;
+}
+// ---------------
+// подключаем шрифт файлом:
+// подключение шрифта через правило @font-face на примере семейства шрифтов Montserrat
+@font-face {
+    font-family: "Montserrat", sans-serif;
+// путь к папке fonts -- ../fonts/my-font-name.woff2
+    src: url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap") format("woff2");
+}
+body,html {
+    height: auto;
+    min-height: 100%;
+    text-align: left;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: 0.2px;
+  color: #000000;
+
+
+// ------------------------------------//
+}
+// утилитарные классы для подклюяения миксинов:
+.btn {
+    @include mix.btn;
+    // эффект нажатия на кнопку:
+transition: all 0.3s ease-in;
+ @include media.hover {
+    // background-color: transparent;
+}
+}
+// --------------------------------------------------------
+
+// задник через html first:, в структуре BEM, сначала элемент блока с картинкой (class*="__cover"), затем элемент блока с контентной частью страницы (class*="__content")
+[class*="__cover"] {
+    position: absolute; // чтоб изображение было фоном
+    width: auto;
+    height: auto;
+    z-index: 1; // изображение на заднем плане, для контентной части z-index: 2 нужен;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; // изображение полностью покроет блок
+        object-position: top; // изображение встанет по центру
+    }
+
+}
+// чтобы контентная часть была по верх задника
+[class*="__content"] {
+    z-index: 2; // по умолчанию,
+    position: relative;
+}
+// утилитарный класс для построения контента
+[class*="__layout"] {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    row-gap: var(--vertical-gap);
+}
+[class*="__layout--row"] {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--horisontal-gap);
+    @include media.tablet-b {
+        flex-wrap: wrap;
+    }
+}

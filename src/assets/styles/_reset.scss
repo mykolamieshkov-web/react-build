@@ -1,0 +1,31 @@
+// -- базовый сброс стилей
+* {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    box-sizing: border-box;
+}
+img {
+    // адаптивное повидение изображений
+    max-width: 100%;
+    // чтобы иконки не растягивались на больших экранах
+    flex-shrink: 0;
+    // убирает разрыв между изображением и текстом
+    vertical-align: middle;
+
+
+}
+a {
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+}
+button {
+    all: initial;
+}
+nav {
+    display: flex;
+}
+ul, li {
+    list-style: none;
+}
+// --------------

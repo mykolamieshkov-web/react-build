@@ -1,7 +1,24 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import path from 'path'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // ОБЪЕДИНЯЕМ ВСЕ ИМПОРТЫ В ОДНУ СТРОКУ
+        // Важно: в конце каждой строки должна быть точка с запятой!
+        additionalData: `
+          @use "@/assets/styles/_utilities.scss" as *;
+          @use "@/assets/styles/mixins/_media.scss" as *;
+        `
+      }
+    }
+  }
 })
