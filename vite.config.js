@@ -14,10 +14,7 @@ export default defineConfig({
       scss: {
         // ОБЪЕДИНЯЕМ ВСЕ ИМПОРТЫ В ОДНУ СТРОКУ
         // Важно: в конце каждой строки должна быть точка с запятой!
-        additionalData: `
-          @use "@/assets/styles/_utilities.scss" as *;
-          @use "@/assets/styles/mixins/_media.scss" as *;
-        `
+
       }
     }
   }

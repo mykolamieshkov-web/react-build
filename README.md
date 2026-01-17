@@ -85,3 +85,28 @@ Deploy the ptoject:
 Добавь скрипт: "deploy": "gh-pages -d dist"
 
 После npm run build просто запусти npm run deploy.
+/root
+├── public/                # Сюда кладем все картинки (доступ по пути /img/...)
+│   └── img/
+│       └── Header/
+│           └── 01-icon.svg
+├── src/
+│   ├── assets/
+│   │   └── styles/        # Глобальные стили
+│   │       ├── mixins/
+│   │       │   ├── _media.scss
+│   │       │   └── _mixins.scss
+│   │       ├── _reset.scss
+│   │       ├── _root.scss
+│   │       ├── _typography.scss
+│   │       ├── _utilities.scss
+│   │       └── main.scss   # Входная точка SCSS
+│   ├── components/        # Локальные компоненты
+│   │   ├── Header/
+│   │   │   ├── Header.jsx
+│   │   │   └── Header.scss
+│   │   └── ...
+│   ├── App.jsx            # Структура страницы (.wrapper)
+│   └── main.jsx           # Входная точка React
+├── vite.config.js         # Конфиг для авто-подключения миксинов
+└── index.html             # Чистый HTML без лишних линков

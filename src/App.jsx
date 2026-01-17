@@ -1,26 +1,22 @@
+import React from 'react';
 import Header from './components/Header/Header';
-import HeroSection from './components/HeroSection/HeroSection'; //
+import HeroSection from './components/HeroSection/HeroSection';
 import Footer from './components/Footer/Footer';
 
 function App() {
   return (
-    <div className="wrapper"> {/* Твой привычный wrapper */}
-
-      <header className="header">
-        <Header /> {/* Внутри него будет твой <nav> */}
-      </header>
+    <div className="wrapper">
+      {/* Комментарий в JSX пишется ТАК, и он не должен «съедать» тег */}
+      <Header />
 
       <main className="main-content">
         <HeroSection />
-        {/* Другие БЭМ блоки/секции */}
-        <section className="services">
-           {/* Компонент услуг */}
-        </section>
+
+
       </main>
 
-      <footer className="footer">
-        <Footer />
-      </footer>
+      {/* Если Footer — это отдельный компонент,
+          то тег <footer> обычно уже лежит внутри него */}
 
     </div>
   );
