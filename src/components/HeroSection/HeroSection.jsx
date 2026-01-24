@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import './HeroSection.scss';
+import './HeroSection.js';
 
-const HeroSection = () => {
 
+
+function HeroSection() {
+  return (
+    <div>HeroSection</div>
+  )
 }
+
 export default HeroSection;
