@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from './components/Header/';
-import HeroSection from './components/HeroSection/';
-import Footer from './components/Footer/';
+import Header from './widgets/Header/';
+import HeroSection from './widgets/HeroSection/';
+import Footer from './widgets/Footer/';
 
 function App() {
   return (
