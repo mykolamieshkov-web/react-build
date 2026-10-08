@@ -32,39 +32,46 @@ padding: 0 16px;
     flex-grow: 1;
 }
 // ---------------
-// подключаем шрифт файлом:
-// подключение шрифта через правило @font-face на примере семейства шрифтов Montserrat
-@font-face {
-    font-family: "Poppins", sans-serif;
-// путь к папке fonts -- ../fonts/my-font-name.woff2
-    src: url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap') format("woff2");
-}
-@font-face {
-    font-family: "Cal Sans", sans-serif;
-    src: url('https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap');
-}
-// body,html {
-//     height: auto;
-//     min-height: 100%;
-//     text-align: left;
-//     overflow-x: hidden;
-//     scroll-behavior: smooth;
-//   font-family: "Poppins", sans-serif;
-//   font-size: 16px;
-//   font-weight: 500;
-//   line-height: 24px;
-//   letter-spacing: 0ß;
-//   color:var(--secondary-color);
-//   background-color: var(--primary-color);
 
 
-// // ------------------------------------//
-// }
-// h1, h2, h3 {
-// font-family: "Cal Sans", sans-serif;
-// font-weight: 700;
-// color:#000000;
-// }
+body,html {
+    height: auto;
+    min-height: 100%;
+    text-align: left;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+   font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0;
+  color:var(--secondary-color);
+  background-color: var(--primary-color);
+
+
+// ------------------------------------//
+}
+h1, h2, h3 {
+  font-family: "Baskervville", serif;
+}
+
+h1 {
+    font-size: clamp(33px, 21px + 3.8393vw, 76px);
+    line-height: calc(88 / 76 * 100%);
+
+}
+
+h2 {
+    font-size: clamp(26px, 20px + 1.8750vw, 47px);
+    line-height: calc(56 / 47 * 100%);
+  
+}
+
+h3 {
+    font-size: clamp(20px, 17px + 0.8036vw, 29px);
+    line-height: calc(32 / 29 * 100%);
+   
+}
 // утилитарные классы для подклюяения миксинов:
 
 // --------------------------------------------------------
