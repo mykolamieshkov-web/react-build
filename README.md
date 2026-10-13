@@ -17,6 +17,25 @@
 | **Очистка кэша npm** | `npm cache clean --force` |
 
 ---
+Images
+
+Store originals (jpg/png) in public/img/
+
+Reference webp in code:
+
+<picture>
+  <source srcSet="/img/banner.webp" type="image/webp" loading="lazy" />
+  <img 
+    src="/img/banner.jpg" 
+    alt="Jade Touch salon banner showing professional nail and beauty services"
+  />
+</picture>
+
+Dev: jpg loads as fallback (webp not generated yet)
+Build: npm run build generates webp automatically, both formats in dist
+Hosting: webp serves first (smaller), jpg fallback for old browsers
+
+No manual conversion needed.
 
 ## 📂 Структура проекта (Component-Based)
 

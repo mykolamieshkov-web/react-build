@@ -9,8 +9,18 @@ export default defineConfig({
     react(),
     ViteImageOptimizer({
       test: /\.(jpe?g|png|gif|svg)$/i,
+      includePublic: true,
       webp: {
-        quality: 30
+        quality: 75
+      },
+      png: {
+        quality: 75
+      },
+      jpeg: {
+        quality: 75
+      },
+      jpg: {
+        quality: 75
       }
     })
   ],
@@ -25,6 +35,18 @@ export default defineConfig({
     },
     preprocessorOptions: {
       scss: {
+      }
+    }
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name.endsWith('.webp')) {
+            return 'img/[name][extname]'
+          }
+          return 'assets/[name]-[hash][extname]'
+        }
       }
     }
   }
