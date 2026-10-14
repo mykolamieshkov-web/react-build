@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './widgets/Header/';
-import HeroSection from './widgets/HeroSection/';
+import HeroSection from './widgets/HeroSection';
 import Footer from './widgets/Footer/';
 
 function App() {

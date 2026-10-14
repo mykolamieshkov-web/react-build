@@ -1,7 +1,7 @@
 // HeroSection.jsx
 
 import { useEffect, useRef } from 'react';
-import { initHeroVideo } from './script';
+import { initHeroVideo } from '../../scripts/hero';
 import './HeroSection.scss';
 
 function HeroSection() {
@@ -20,40 +20,46 @@ function HeroSection() {
         autoPlay
         muted
         playsInline
-        preload="metadata"
+        replay 
       >
-        <source src="/videos/Desktop-frame.webm" type="video/webm" media="(min-width: 768px)" />
-        <source src="/videos/mobile-frame.webm" type="video/webm" media="(max-width: 767px)" />
+        <source src="/video/Desktop-frame.webm" type="video/webm" media="(min-width: 768px)" />
+        <source src="/video/mobile-frame.webm" type="video/webm" media="(max-width: 767px)" />
       </video>
 
       <div className="hero__overlay" ref={overlayRef}>
-        <div className="hero__content">
-          <h1 className="hero__title">
-            Professional Nail Salon & Beauty Services in Erbil — Women-Only Private Rooms, Medical-Grade Sterilization
-          </h1>
+        <div className="hero__content-wrapper">
+          <div className="hero__title-wrapper">
+            <h1>
+              Professional Nail Salon & Beauty Services in Erbil — Women-Only Private Rooms, Medical-Grade Sterilization
+            </h1>
+          </div>
 
-          <p className="hero__subtitle">
-            Expert nails, hair, lashes, and makeup for brides, professionals, and everyday beauty in Kurdistan.
-          </p>
+          <div className="hero__subtitle-wrapper">
+            <p>
+              Expert nails, hair, lashes, and makeup for brides, professionals, and everyday beauty in Kurdistan.
+            </p>
+          </div>
 
-          <div className="hero__ctas">
-            <a
-              href="https://wa.me/9647500241000?text=Hello%20Jade%20Touch"
-              className="hero__cta hero__cta--primary"
-              aria-label="Book appointment on WhatsApp"
-            >
-              Book Now on WhatsApp
-            </a>
+          <div className="hero__ctas-wrapper">
+            <div className="hero__cta-primary-wrapper">
+              <a
+                href="https://wa.me/9647500241000?text=Hello%20Jade%20Touch"
+                aria-label="Book appointment on WhatsApp"
+              >
+                Book Now on WhatsApp
+              </a>
+            </div>
 
-            <button
-              className="hero__cta hero__cta--secondary"
-              aria-label="View our services"
-              onClick={() => {
-                document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              View Our Services
-            </button>
+            <div className="hero__cta-secondary-wrapper">
+              <button
+                aria-label="View our services"
+                onClick={() => {
+                  document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                View Our Services
+              </button>
+            </div>
           </div>
         </div>
       </div>
