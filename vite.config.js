@@ -35,6 +35,10 @@ export default defineConfig({
     },
     preprocessorOptions: {
       scss: {
+         additionalData: `
+          @use "${path.resolve(__dirname, 'src/styles/mixins/_mixins.scss')}" as *;
+          @use "${path.resolve(__dirname, 'src/styles/mixins/_media.scss')}" as media;
+        `
       }
     }
   },
@@ -50,4 +54,6 @@ export default defineConfig({
       }
     }
   }
+
 })
+

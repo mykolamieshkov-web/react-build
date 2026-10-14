@@ -1,8 +1,7 @@
 // файл с утилитарными стилями, сюда записываються свойства тех классов, которые многоразово повторяются в проекте
 
 
-@use "./mixins/media" as media;
-@use "./mixins/mixins" as mix;
+
 [class*="__container"] {
 width: 100%;
 max-width: var(--container-max-width);
@@ -56,21 +55,25 @@ h1, h2, h3 {
 }
 
 h1 {
-    font-size: clamp(33px, 21px + 3.8393vw, 76px);
-    line-height: calc(88 / 76 * 100%);
-
+  font-size: clamp(25px, 16px + 2.95vw, 58px);
+  line-height: calc(88 / 76 * 100%);
+  text-wrap: balance;
 }
 
 h2 {
-    font-size: clamp(26px, 20px + 1.8750vw, 47px);
-    line-height: calc(56 / 47 * 100%);
-  
+  font-size: clamp(20px, 15px + 1.44vw, 36px);
+  line-height: calc(56 / 47 * 100%);
+    text-wrap: balance;
 }
 
 h3 {
-    font-size: clamp(20px, 17px + 0.8036vw, 29px);
-    line-height: calc(32 / 29 * 100%);
-   
+  font-size: clamp(15px, 13px + 0.62vw, 22px);
+  line-height: calc(32 / 29 * 100%);
+}
+p {
+      text-wrap: balance;
+      text-align: left ;
+
 }
 // утилитарные классы для подклюяения миксинов:
 

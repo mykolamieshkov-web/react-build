@@ -30,7 +30,7 @@ function HeroSection() {
         <div className="hero__content-wrapper">
           <div className="hero__title-wrapper">
             <h1>
-              Professional Nail Salon & Beauty Services in Erbil — Women-Only Private Rooms, Medical-Grade Sterilization
+             Professional Nails, Hair & Lashes in Erbil — Private Rooms, Expert Care
             </h1>
           </div>
 
@@ -46,19 +46,19 @@ function HeroSection() {
                 href="https://wa.me/9647500241000?text=Hello%20Jade%20Touch"
                 aria-label="Book appointment on WhatsApp"
               >
-                Book Now on WhatsApp
+                Book  on WhatsApp
               </a>
             </div>
 
             <div className="hero__cta-secondary-wrapper">
-              <button
+              <a
                 aria-label="View our services"
                 onClick={() => {
                   document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
-                View Our Services
-              </button>
+                View  Services
+              </a>
             </div>
           </div>
         </div>

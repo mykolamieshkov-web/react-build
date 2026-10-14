@@ -5,7 +5,7 @@ export function initHeroVideo(videoRef, overlayRef) {
   if (!video) return;
 
   const videoDuration = 19;
-  const triggerTime = videoDuration - 0.5;
+  const triggerTime = 7;
   let triggered = false;
 
   const handleTimeUpdate = () => {
