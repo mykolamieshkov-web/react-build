@@ -1,31 +1,41 @@
-// /src/scripts/hero.js
+// hero.js — Safari/iOS-safe autoplay for hero video
 
-export function initHeroVideo(videoRef, overlayRef) {
+export function initHeroVideo(videoRef) {
   const video = videoRef.current;
-  if (!video) return;
+  if (!video) return undefined;
 
-  const videoDuration = 19;
-  const triggerTime = 7;
-  let triggered = false;
+  video.muted = true;
+  video.defaultMuted = true;
+  video.playsInline = true;
+  video.setAttribute('webkit-playsinline', 'true');
 
-  const handleTimeUpdate = () => {
-    if (video.currentTime >= triggerTime && !triggered) {
-      triggered = true;
-      overlayRef.current.classList.add('active');
-    }
+  const tryPlay = () => {
+    const p = video.play();
+    if (p && typeof p.catch === 'function') p.catch(() => {});
   };
 
-  const handleVideoEnd = () => {
-    video.currentTime = 0;
-    video.play();
-    triggered = false;
-  };
+  tryPlay();
+  video.addEventListener('loadeddata', tryPlay);
+  video.addEventListener('canplay', tryPlay);
 
-  video.addEventListener('timeupdate', handleTimeUpdate);
-  video.addEventListener('ended', handleVideoEnd);
+  const onVisibility = () => {
+    if (!document.hidden) tryPlay();
+  };
+  document.addEventListener('visibilitychange', onVisibility);
+
+  const onFirstGesture = () => {
+    tryPlay();
+    window.removeEventListener('touchstart', onFirstGesture);
+    window.removeEventListener('click', onFirstGesture);
+  };
+  window.addEventListener('touchstart', onFirstGesture, { passive: true });
+  window.addEventListener('click', onFirstGesture);
 
   return () => {
-    video.removeEventListener('timeupdate', handleTimeUpdate);
-    video.removeEventListener('ended', handleVideoEnd);
+    video.removeEventListener('loadeddata', tryPlay);
+    video.removeEventListener('canplay', tryPlay);
+    document.removeEventListener('visibilitychange', onVisibility);
+    window.removeEventListener('touchstart', onFirstGesture);
+    window.removeEventListener('click', onFirstGesture);
   };
 }

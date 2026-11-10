@@ -1,145 +1,257 @@
-// HeroSection.scss
-// Mixins and media are injected globally via vite.config.js (additionalData),
-// so no @use lines are needed here.
-
 .hero {
   position: relative;
   width: 100%;
   height: 100vh;
+  height: 100svh;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
   overflow: hidden;
-}
+  isolation: isolate;
+  color: #ffffff;
 
-.hero__video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+  &__video {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0 0 0 0;
+    object-fit: cover;
+    transform: translateZ(0);
+  }
 
-.hero__overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.8s ease-out;
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 0 0;
+    padding: 0 1.25rem 0 1.25rem;
+    background-color: rgba(3, 5, 4, 0.55);
+    background-color: color-mix(in srgb, var(--primary-color) 55%, transparent);
+  }
+
+  &__content-wrapper {
+    width: 100%;
+    max-width: 52rem;
+    margin: 0 auto;
+    padding: 0 0 0 0;
+    text-align: center;
+  }
+
+  &__title-wrapper,
+  &__subtitle-wrapper {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+  }
+
+  &__title-wrapper h1 {
+    margin: 0 0 1rem 0;
+    padding: 0 0 0 0;
+    color: #ffffff;
+    // font-size: clamp(1.875rem, 4.5vw, 3.25rem);
+    font-weight: 700;
+    // line-height: 1.15;
+    // letter-spacing: -0.01em;
+  }
+
+  &__subtitle-wrapper {
+    margin-bottom: 2rem;
+  }
+
+  &__subtitle-wrapper p {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    color: rgba(255, 255, 255, 0.88);
+    // font-size: clamp(1rem, 1.6vw, 1.2rem);
+    font-weight: 400;
+    // line-height: 1.6;
+  }
+
+  &__ctas-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+  }
+
+  &__cta-primary-wrapper,
+  &__cta-secondary-wrapper {
+    display: flex;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+  }
+
+  &__cta {
+    display: inline-block;
+    margin: 0 0 0 0;
+    padding: 0.85rem 1.75rem 0.85rem 1.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+    will-change: opacity;
+
+    &:hover,
+    &:focus-visible {
+      opacity: 0.85;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--accent-color);
+      outline-offset: 4px;
+    }
+
+    &--primary {
+      background-color: var(--accent-color);
+      color: var(--primary-color);
+      border: 1px solid var(--accent-color);
+    }
+
+    &--secondary {
+      background-color: transparent;
+      color: #ffffff;
+      border: 1px solid #ffffff;
+    }
+  }
+
+  &__nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    margin: 0 0 0 0;
+    padding: 0 0 1.5rem 0;
+  }
+
+  &__nav-next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--accent-color);
+      border-color: var(--accent-color);
+      color: var(--primary-color);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--accent-color);
+      outline-offset: 3px;
+    }
+  }
+
+  // ---- Reveal animations: play once, after video ends ----
+
+  &:not(&--revealed) {
+    .hero__title-wrapper h1 {
+      opacity: 0;
+      transform: translate3d(4rem, 0, 0);
+    }
+
+    .hero__subtitle-wrapper p {
+      opacity: 0;
+      transform: translate3d(-4rem, 0, 0);
+    }
+
+    .hero__cta-primary-wrapper,
+    .hero__cta-secondary-wrapper {
+      opacity: 0;
+      transform: translate3d(0, 3rem, 0);
+    }
+  }
+
+  &--revealed {
+    .hero__title-wrapper h1 {
+      animation: heroFromRight 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) 0s both;
+    }
+
+    .hero__subtitle-wrapper p {
+      animation: heroFromLeft 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) 0.2s both;
+    }
+
+    .hero__cta-primary-wrapper {
+      animation: heroFromBottom 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 0.4s both;
+    }
+
+    .hero__cta-secondary-wrapper {
+      animation: heroFromBottom 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 0.55s both;
+    }
+  }
 
   @media (prefers-reduced-motion: reduce) {
-    opacity: 1;
-  }
+    &:not(&--revealed) {
+      .hero__title-wrapper h1,
+      .hero__subtitle-wrapper p,
+      .hero__cta-primary-wrapper,
+      .hero__cta-secondary-wrapper {
+        opacity: 1;
+        transform: none;
+      }
+    }
 
-  &.active {
-    opacity: 1;
-  }
-}
-
-.hero__content-wrapper {
-  text-align: left;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  flex-flow: column nowrap;
-}
-
-.hero__title-wrapper {
-  max-width: 800px;
-  padding: 0 0 1rem 0;
-  margin: 0 0 0.3rem 0;
-
-  @include media.tablet {
-    max-width: 90%;
-    padding: 0 1rem 0.75rem 1rem;
-  }
-
-  h1 {
-    margin: 0;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 0, 0, 0.5);
-  }
-}
-
-.hero__subtitle-wrapper {
-  max-width: 310px;
-  padding: 1.5rem 1.5rem 2rem 1.5rem;
-  backdrop-filter: blur(10px);
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 0.75rem;
-
-  @include media.tablet {
-    max-width: 90%;
-    padding: 1rem 1rem 1.5rem 1rem;
-    backdrop-filter: blur(8px);
-  }
-
-  // was a global `p` rule outside any selector; now scoped to the subtitle box
-  p {
-    text-align: left;
-    text-wrap: balance;
-    margin: 0;
-    color: #f1f1f1;
-  }
-}
-
-// Desktop-first, like the rest of the project: row by default, column on tablet and below
-.hero__ctas-wrapper {
-  max-width: 800px;
-  padding: 0 1.5rem;
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  align-items: center;
-  justify-content: center;
-
-  @include media.tablet {
-    flex-direction: column;
-    max-width: 90%;
-    padding: 0 1rem;
-  }
-}
-
-.hero__cta-primary-wrapper {
-  max-width: 280px;
-  padding: 0;
-
-  @include media.tablet {
-    width: 100%;
-  }
-
-  a {
-    padding: 1.5rem 1.5rem 2rem 1.5rem;
-    margin: 8px 0 0 0;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 187px;
-    height: 48px;
-    border-radius: 37px;
-    backdrop-filter: blur(10px);
-    background: var(--accent-color);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    color: #f1f1f1;
-    transition: all 0.3s ease;
-
-    @include media.hover {
-      background: rgba(0, 0, 0, 0.4);
-      color: black;
-      cursor: pointer;
+    &--revealed {
+      .hero__title-wrapper h1,
+      .hero__subtitle-wrapper p,
+      .hero__cta-primary-wrapper,
+      .hero__cta-secondary-wrapper {
+        animation: none;
+      }
     }
   }
 }
 
-.hero__cta-secondary-wrapper {
-  max-width: 280px;
-  padding: 0;
+@keyframes heroFromRight {
+  from {
+    opacity: 0;
+    transform: translate3d(4rem, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
 
-  @include media.tablet {
-    width: 100%;
+@keyframes heroFromLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-4rem, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes heroFromBottom {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 3rem, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 }

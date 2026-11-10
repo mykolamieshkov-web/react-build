@@ -1,0 +1,162 @@
+.services-section {
+  color: var(--secondary-color);
+
+  &__eyebrow {
+    color: var(--accent-color);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  &__heading {
+    color: #ffffff;
+  }
+
+  &__lead {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  &__block-number {
+    color: var(--accent-color);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  &__block-title {
+    color: #ffffff;
+  }
+
+  &__block-desc {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  &__control {
+    background-color: rgba(3, 5, 4, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: #ffffff;
+    cursor: pointer;
+
+    @include media.hover {
+      background-color: var(--accent-color);
+      border-color: var(--accent-color);
+      color: var(--primary-color);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--accent-color);
+      outline-offset: 3px;
+    }
+  }
+
+  &__control-icon {
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  &__indicator {
+    background-color: rgba(255, 255, 255, 0.18);
+    border-radius: 2px;
+    border: 0;
+    cursor: pointer;
+
+    @include media.hover {
+      background-color: rgba(255, 255, 255, 0.35);
+    }
+
+    &--active {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  &__indicator-fill {
+    background-color: var(--accent-color);
+    border-radius: 2px;
+  }
+
+  &__card {
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+
+    @include media.tablet {
+      border-radius: 16px;
+    }
+
+    @include media.mobile {
+      border-radius: 14px;
+    }
+
+    &--active {
+      border-color: rgba(223, 177, 91, 0.45);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.75);
+
+      .services-section__img {
+        transform: scale(1.03);
+      }
+    }
+  }
+
+  &__card-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(3, 5, 4, 0.08) 0%,
+      rgba(3, 5, 4, 0.4) 40%,
+      rgba(3, 5, 4, 0.9) 75%,
+      rgba(3, 5, 4, 0.98) 100%
+    );
+  }
+
+  &__card-badge {
+    background-color: rgba(3, 5, 4, 0.7);
+    border: 1px solid rgba(223, 177, 91, 0.35);
+    border-radius: 9999px;
+    color: var(--accent-color);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  &__card-title {
+    font-family: "Baskervville", serif;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+  }
+
+  &__card-desc {
+    color: rgba(255, 255, 255, 0.88);
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.75);
+  }
+
+  &__card-duration {
+    color: var(--accent-color);
+    font-weight: 600;
+  }
+
+  &__card-sub {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  &__card-btn {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 9999px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+
+    @include media.hover {
+      opacity: 0.9;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #ffffff;
+      outline-offset: 3px;
+    }
+  }
+}
